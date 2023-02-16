@@ -10,6 +10,7 @@ namespace Midterm_NET
     internal static class Program
     {
         public static String strConn = "";
+        public static String sessionEmployeeID = "";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

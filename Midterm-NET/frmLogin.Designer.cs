@@ -30,12 +30,11 @@
         {
             this.txtbxUsername = new System.Windows.Forms.TextBox();
             this.txtbxPassword = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.chkbxShowPassword = new System.Windows.Forms.CheckBox();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +86,18 @@
             this.panel1.Size = new System.Drawing.Size(277, 110);
             this.panel1.TabIndex = 4;
             // 
+            // chkbxShowPassword
+            // 
+            this.chkbxShowPassword.AutoSize = true;
+            this.chkbxShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkbxShowPassword.Location = new System.Drawing.Point(25, 84);
+            this.chkbxShowPassword.Name = "chkbxShowPassword";
+            this.chkbxShowPassword.Size = new System.Drawing.Size(102, 17);
+            this.chkbxShowPassword.TabIndex = 6;
+            this.chkbxShowPassword.Text = "Show Password";
+            this.chkbxShowPassword.UseVisualStyleBackColor = true;
+            this.chkbxShowPassword.CheckedChanged += new System.EventHandler(this.chkbxShowPassword_CheckedChanged);
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.ForestGreen;
@@ -99,17 +110,6 @@
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // chkbxShowPassword
-            // 
-            this.chkbxShowPassword.AutoSize = true;
-            this.chkbxShowPassword.Location = new System.Drawing.Point(25, 84);
-            this.chkbxShowPassword.Name = "chkbxShowPassword";
-            this.chkbxShowPassword.Size = new System.Drawing.Size(102, 17);
-            this.chkbxShowPassword.TabIndex = 6;
-            this.chkbxShowPassword.Text = "Show Password";
-            this.chkbxShowPassword.UseVisualStyleBackColor = true;
-            this.chkbxShowPassword.CheckedChanged += new System.EventHandler(this.chkbxShowPassword_CheckedChanged);
             // 
             // btnExit
             // 
@@ -148,7 +148,6 @@
 
         private System.Windows.Forms.TextBox txtbxUsername;
         private System.Windows.Forms.TextBox txtbxPassword;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Panel panel1;

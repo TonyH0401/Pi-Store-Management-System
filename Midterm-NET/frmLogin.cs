@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Data.SqlClient;
 
 namespace Midterm_NET
 {
@@ -56,8 +55,8 @@ namespace Midterm_NET
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Do you want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dr == DialogResult.Yes)
+            DialogResult dt = MessageBox.Show("Do you want to Exit!?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dt == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -69,16 +68,27 @@ namespace Midterm_NET
             {
                 SqlConnection conn = new SqlConnection(Program.strConn);
                 conn.Open();
-                String sSQL = "select username from __Empoyee where account"
-
+                String sSQL = "select employee_ID from __Employee where employee_ID=@username";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if(dt.Rows.Count > 0)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                //MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error Code: 90", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
             return result;
         }
         private void chkbxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -92,37 +102,70 @@ namespace Midterm_NET
                 txtbxPassword.UseSystemPasswordChar = true;
             }
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             String username = txtbxUsername.Text.Trim();
             String password = txtbxPassword.Text.Trim();
-            if(informationIsFilled(username, password) != 0)
+            int informationIsFilled_tempValue = informationIsFilled(username, password);
+            if (informationIsFilled_tempValue != 0)
             {
-                if(informationIsFilled(username, password) == 2)
+                if(informationIsFilled_tempValue == 1)
+                {
+                    MessageBox.Show("Please fill in your username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                }
+                else if(informationIsFilled_tempValue == 2)
                 {
                     MessageBox.Show("Please fill in your username!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                if (informationIsFilled(username, password) == 3)
+                else if(informationIsFilled_tempValue == 3)
                 {
                     MessageBox.Show("Please fill in your password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                if (informationIsFilled(username, password) == 1)
-                {
-                    MessageBox.Show("Please fill in your username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
                 clearAllTextBox();
-            } 
+            }
             else
             {
-                try
+                bool userExist_tempValue = userExist(username);
+                if(userExist_tempValue == true)
                 {
+                    try
+                    {
+                        SqlConnection conn = new SqlConnection(Program.strConn);
+                        conn.Open();
+                        String sSQL = "select employee_ID from __Employee where employee_ID=@username and employee_phone=@password";
+                        SqlCommand cmd = new SqlCommand(sSQL, conn);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            String temp = (String)dt.Rows[0][0];
+                            Program.sessionEmployeeID = temp;
+                            MessageBox.Show("Login Sucessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            loginAttemps++;
+                            MessageBox.Show("Invalid Login. Please check Username or Password!\nYou have: " + (5 - loginAttemps).ToString().Trim() + " tries left", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            if (loginAttemps == 5)
+                            {
+                                Application.Exit();
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
 
+                        MessageBox.Show("Error! Please reload the Application. Code 162", "Error");
+                    }
                 }
-                catch (Exception)
+                else
                 {
-
-                    throw;
+                    MessageBox.Show("User does not exist! Please contact admin!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
