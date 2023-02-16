@@ -9,3 +9,5 @@ D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm-NET.csproj.Ge
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm-NET.csproj.CoreCompileInputs.cache
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm-NET.exe
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm-NET.pdb
+D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm_NET.frmMain.resources
+D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm_NET.frmEmployee.resources

@@ -143,6 +143,7 @@ namespace Midterm_NET
                         if (dt.Rows.Count > 0)
                         {
                             String temp = (String)dt.Rows[0][0];
+                            //MessageBox.Show(temp);
                             Program.sessionEmployeeID = temp;
                             MessageBox.Show("Login Sucessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
