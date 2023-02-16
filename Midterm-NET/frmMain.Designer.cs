@@ -33,7 +33,6 @@
             this.manageClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageOrderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.generateBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuername = new System.Windows.Forms.Label();
             this.lblFullname = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.txtbxFullname = new System.Windows.Forms.TextBox();
             this.txtbxPhone = new System.Windows.Forms.TextBox();
             this.txtbxEmail = new System.Windows.Forms.TextBox();
+            this.manageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@
             this.manageEmployeeToolStripMenuItem,
             this.manageClientToolStripMenuItem,
             this.manageProductToolStripMenuItem,
+            this.manageOrderToolStripMenuItem,
             this.placeOrderToolStripMenuItem,
             this.generateBillToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -72,6 +73,7 @@
             this.manageClientToolStripMenuItem.Name = "manageClientToolStripMenuItem";
             this.manageClientToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.manageClientToolStripMenuItem.Text = "Manage &Client";
+            this.manageClientToolStripMenuItem.Click += new System.EventHandler(this.manageClientToolStripMenuItem_Click);
             // 
             // manageProductToolStripMenuItem
             // 
@@ -81,17 +83,9 @@
             // 
             // placeOrderToolStripMenuItem
             // 
-            this.placeOrderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageOrderToolStripMenuItem1});
             this.placeOrderToolStripMenuItem.Name = "placeOrderToolStripMenuItem";
             this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.placeOrderToolStripMenuItem.Text = "Place Order";
-            // 
-            // manageOrderToolStripMenuItem1
-            // 
-            this.manageOrderToolStripMenuItem1.Name = "manageOrderToolStripMenuItem1";
-            this.manageOrderToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
-            this.manageOrderToolStripMenuItem1.Text = "Manage &Order";
             // 
             // generateBillToolStripMenuItem
             // 
@@ -167,6 +161,12 @@
             this.txtbxEmail.Size = new System.Drawing.Size(145, 20);
             this.txtbxEmail.TabIndex = 8;
             // 
+            // manageOrderToolStripMenuItem
+            // 
+            this.manageOrderToolStripMenuItem.Name = "manageOrderToolStripMenuItem";
+            this.manageOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.manageOrderToolStripMenuItem.Text = "Manage &Order";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,7 +202,6 @@
         private System.Windows.Forms.ToolStripMenuItem manageProductToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem placeOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateBillToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageOrderToolStripMenuItem1;
         private System.Windows.Forms.Label lblUsuername;
         private System.Windows.Forms.Label lblFullname;
         private System.Windows.Forms.Label lblEmail;
@@ -211,5 +210,6 @@
         private System.Windows.Forms.TextBox txtbxFullname;
         private System.Windows.Forms.TextBox txtbxPhone;
         private System.Windows.Forms.TextBox txtbxEmail;
+        private System.Windows.Forms.ToolStripMenuItem manageOrderToolStripMenuItem;
     }
 }

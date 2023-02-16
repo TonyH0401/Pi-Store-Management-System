@@ -21,7 +21,7 @@ namespace Midterm_NET
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEmployee());
+            Application.Run(new frmMain());
         }
     }
 }
