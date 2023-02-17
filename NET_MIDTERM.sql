@@ -92,4 +92,5 @@ select * from __Product
 --select * from __OrderItem
 --delete from __OrderItem
 --delete from __Order
+--update __Order set order_data = '2022-01-29' where order_ID = 'OR1'
 

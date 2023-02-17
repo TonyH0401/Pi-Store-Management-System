@@ -87,6 +87,7 @@
             this.manageOrderToolStripMenuItem.Name = "manageOrderToolStripMenuItem";
             this.manageOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.manageOrderToolStripMenuItem.Text = "Manage &Order";
+            this.manageOrderToolStripMenuItem.Click += new System.EventHandler(this.manageOrderToolStripMenuItem_Click);
             // 
             // placeOrderToolStripMenuItem
             // 

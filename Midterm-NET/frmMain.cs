@@ -151,5 +151,18 @@ namespace Midterm_NET
                 MessageBox.Show("You are not allowed to view this page!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void manageOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (authenticationEmployee(currentEmployee.Id) == true)
+            {
+                frmOrder f = new frmOrder();
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("You are not allowed to view this page!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
