@@ -29,9 +29,12 @@ namespace Midterm_NET
             dataGridViewProduct.DataSource = dtCurrent;
             dataGridViewProduct.Columns["product_desp"].Visible = false;
 
+            cbbxClient.DropDownStyle = ComboBoxStyle.DropDownList;
             Load_ComboBox();
 
             initiateDataGridViewOrder();
+
+            this.Text = "Place Order - " + Program.sessionEmployeeID;
         }
 
         private void initiateDataGridViewOrder()
@@ -434,9 +437,9 @@ namespace Midterm_NET
                 {
                     addToOrder(order_id, client_id, employee_id, date, total);
                     addToOrderItem(order_id, dataGridViewOrder);
-
-                    //update product
-                    //refresh we have 2 fresh this only order refresh everything
+                    updateProductAfterOrder(dataGridViewOrder);
+                    //clear all data
+                    clearDataAfterPOST(sender, e);
                 }
             }
         }
@@ -505,6 +508,53 @@ namespace Midterm_NET
                     //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }           
+        }
+
+        private void updateProductAfterOrder(DataGridView data)
+        {
+            foreach (DataGridViewRow row in data.Rows)
+            {
+                String product_id = row.Cells[0].Value.ToString().Trim();
+                int product_quantity = int.Parse(row.Cells[2].Value.ToString().Trim());
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Program.strConn);
+                    conn.Open();
+                    String sSQL = "update __Product set product_quantity=product_quantity-@quantity where product_ID=@product_id";
+                    SqlCommand cmd = new SqlCommand(sSQL, conn);
+                    cmd.Parameters.AddWithValue("@product_id", product_id);
+                    cmd.Parameters.AddWithValue("@quantity", product_quantity);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i != 0)
+                    {
+                        //MessageBox.Show("Product Updated After Order!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error with Updating Product After Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void clearDataAfterPOST(object sender, EventArgs e)
+        {
+            //reload product datagridview
+            frmPlaceOrder_Load(sender, e);
+            //reload order datagidview
+            dataGridViewOrder.Rows.Clear();
+            initiateDataGridViewOrder();
+            //unlock
+            btnUnlock_Click(sender, e);
+            //clear desp
+            richtxtbxDescription.Clear();
+            //clear quantity
+            txtbxQuantity.Clear();
         }
     }
 }
