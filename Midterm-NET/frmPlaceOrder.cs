@@ -246,9 +246,8 @@ namespace Midterm_NET
                                 updateDataGridViewOrder(id, quantity);
                                 MessageBox.Show("Product updated: " + id, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+                            updateQuantityDataGridViewProductById(id, quantity);
                             txtbxQuantity.Clear();
-                            
-                            //add update to current product dt
                         }
                     }
                 }
@@ -307,5 +306,159 @@ namespace Midterm_NET
             }
         }
 
+        private void updateQuantityDataGridViewProductById(String id, String quantity)
+        {
+            String temp = "";
+            foreach (DataRow row2 in dtCurrent.Rows)
+            {
+                if (row2[0].ToString().Trim().Equals(id) == true)
+                {
+                    temp = row2[3].ToString().Trim();
+                    break;
+                }
+            }
+            int old_quantity = int.Parse(temp);
+            int current_quantity = int.Parse(quantity);
+            int new_quantity = old_quantity - current_quantity;
+            foreach (DataRow row2 in dtCurrent.Rows)
+            {
+                if(row2[0].ToString().Trim().Equals(id) == true)
+                {
+                    row2[3] = new_quantity.ToString().Trim();
+                    break;
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewOrder.Rows.Count == 0)
+            {
+                MessageBox.Show("There are no product to Delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+
+                int index = dataGridViewOrder.SelectedRows[0].Index;
+                if (index >= 0)
+                {
+                    dataGridViewOrder.Rows.RemoveAt(index);
+                }
+                else
+                {
+                    MessageBox.Show("The selected row is null", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private String getOrderID()
+        {
+            int counter = 0;
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select order_ID from __Order";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    counter = dt.Rows.Count;
+                }
+                else
+                {
+                    counter = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Error! Please reload the Application. Code Error 56", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            counter = counter + 1;
+            String result = "OR" + counter.ToString().Trim();
+            if(result.Length > 10)
+            {
+                return null;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        private double getOrderTotal() 
+        {
+            double result = 0;
+            foreach (DataGridViewRow row in dataGridViewOrder.Rows)
+            {
+                int quantity = int.Parse(row.Cells[2].Value.ToString().Trim());
+                int price = int.Parse(row.Cells[3].Value.ToString().Trim());
+                result = result + (quantity * price);
+            }
+            result = result + (result * 0.1);
+            return result;
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            //need to check for lock and datagridview order
+            if (btnLock.Enabled == true)
+            {
+                MessageBox.Show("Please select Client before POST the Order!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(dataGridViewOrder.Rows.Count == 0)
+            {
+                MessageBox.Show("Please complete the Order before POSTING!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+           
+            String order_id = getOrderID();
+            String client_id = txtbxUsername.Text.ToString().Trim();
+            String emloyee_id = Program.sessionEmployeeID;
+            String date = DateTime.Now.ToString("yyyy-MM-dd");
+            double total = getOrderTotal();
+            if(order_id == null)
+            {
+                MessageBox.Show("Order Table is now at MAX capacity! Please contact Admin!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+
+            }
+        }
+
+        private void addToOrder(String id, String client_id, String employee_id, String date, double total)
+        {
+            //try
+            //{
+            //    SqlConnection conn = new SqlConnection(Program.strConn);
+            //    conn.Open();
+            //    String sSQL = "insert into __Order values (order_ID=@id, )";
+            //    SqlCommand cmd = new SqlCommand(sSQL, conn);
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    if (dt.Rows.Count > 0)
+            //    {
+            //        //dataGridViewProduct.DataSource = dt;
+            //        result = dt;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("No Product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
     }
 }
