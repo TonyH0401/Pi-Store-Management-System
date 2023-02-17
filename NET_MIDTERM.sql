@@ -57,7 +57,7 @@ create table __OrderItem(
 )
 
 create table __Bill(
-	bill_ID varchar(10),
+	bill_ID varchar(20),
 	order_ID varchar(10),
 	client_ID varchar(10),
 	employee_ID varchar(10),
@@ -93,4 +93,6 @@ select * from __Product
 --delete from __OrderItem
 --delete from __Order
 --update __Order set order_data = '2022-01-29' where order_ID = 'OR1'
+--select * from __Bill
+--delete from __Bill
 

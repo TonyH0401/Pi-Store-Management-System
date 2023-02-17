@@ -32,18 +32,18 @@
             this.dataGridViewOrderItem = new System.Windows.Forms.DataGridView();
             this.dateTimePickerFind = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblOrder = new System.Windows.Forms.Label();
-            this.lblOderID = new System.Windows.Forms.Label();
-            this.lblClientID = new System.Windows.Forms.Label();
-            this.lblEmployeeID = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblTotalPrice = new System.Windows.Forms.Label();
-            this.txtbxOrderID = new System.Windows.Forms.TextBox();
-            this.txtbxTotalPrice = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtbxTotalPrice = new System.Windows.Forms.TextBox();
             this.dateTimePickerOrder = new System.Windows.Forms.DateTimePicker();
-            this.txtbxClientID = new System.Windows.Forms.TextBox();
             this.txtbxEmployeeID = new System.Windows.Forms.TextBox();
+            this.txtbxClientID = new System.Windows.Forms.TextBox();
+            this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.lblOderID = new System.Windows.Forms.Label();
+            this.txtbxOrderID = new System.Windows.Forms.TextBox();
+            this.lblClientID = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblEmployeeID = new System.Windows.Forms.Label();
+            this.lblOrder = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblOrderItem = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -102,80 +102,6 @@
             this.panel1.Size = new System.Drawing.Size(607, 268);
             this.panel1.TabIndex = 3;
             // 
-            // lblOrder
-            // 
-            this.lblOrder.AutoSize = true;
-            this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrder.Location = new System.Drawing.Point(10, 0);
-            this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(81, 17);
-            this.lblOrder.TabIndex = 4;
-            this.lblOrder.Text = "Order List";
-            // 
-            // lblOderID
-            // 
-            this.lblOderID.AutoSize = true;
-            this.lblOderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOderID.Location = new System.Drawing.Point(11, 16);
-            this.lblOderID.Name = "lblOderID";
-            this.lblOderID.Size = new System.Drawing.Size(65, 15);
-            this.lblOderID.TabIndex = 4;
-            this.lblOderID.Text = "Order ID:";
-            // 
-            // lblClientID
-            // 
-            this.lblClientID.AutoSize = true;
-            this.lblClientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientID.Location = new System.Drawing.Point(11, 54);
-            this.lblClientID.Name = "lblClientID";
-            this.lblClientID.Size = new System.Drawing.Size(66, 15);
-            this.lblClientID.TabIndex = 5;
-            this.lblClientID.Text = "Client ID:";
-            // 
-            // lblEmployeeID
-            // 
-            this.lblEmployeeID.AutoSize = true;
-            this.lblEmployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeeID.Location = new System.Drawing.Point(11, 92);
-            this.lblEmployeeID.Name = "lblEmployeeID";
-            this.lblEmployeeID.Size = new System.Drawing.Size(92, 15);
-            this.lblEmployeeID.TabIndex = 6;
-            this.lblEmployeeID.Text = "Employee ID:";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(11, 162);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(41, 15);
-            this.lblDate.TabIndex = 7;
-            this.lblDate.Text = "Date:";
-            // 
-            // lblTotalPrice
-            // 
-            this.lblTotalPrice.AutoSize = true;
-            this.lblTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPrice.Location = new System.Drawing.Point(11, 130);
-            this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(80, 15);
-            this.lblTotalPrice.TabIndex = 8;
-            this.lblTotalPrice.Text = "Total Price:";
-            // 
-            // txtbxOrderID
-            // 
-            this.txtbxOrderID.Location = new System.Drawing.Point(105, 16);
-            this.txtbxOrderID.Name = "txtbxOrderID";
-            this.txtbxOrderID.Size = new System.Drawing.Size(165, 20);
-            this.txtbxOrderID.TabIndex = 9;
-            // 
-            // txtbxTotalPrice
-            // 
-            this.txtbxTotalPrice.Location = new System.Drawing.Point(106, 130);
-            this.txtbxTotalPrice.Name = "txtbxTotalPrice";
-            this.txtbxTotalPrice.Size = new System.Drawing.Size(57, 20);
-            this.txtbxTotalPrice.TabIndex = 10;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -195,12 +121,26 @@
             this.panel2.Size = new System.Drawing.Size(320, 197);
             this.panel2.TabIndex = 4;
             // 
+            // txtbxTotalPrice
+            // 
+            this.txtbxTotalPrice.Location = new System.Drawing.Point(106, 130);
+            this.txtbxTotalPrice.Name = "txtbxTotalPrice";
+            this.txtbxTotalPrice.Size = new System.Drawing.Size(57, 20);
+            this.txtbxTotalPrice.TabIndex = 10;
+            // 
             // dateTimePickerOrder
             // 
             this.dateTimePickerOrder.Location = new System.Drawing.Point(106, 162);
             this.dateTimePickerOrder.Name = "dateTimePickerOrder";
             this.dateTimePickerOrder.Size = new System.Drawing.Size(204, 20);
             this.dateTimePickerOrder.TabIndex = 5;
+            // 
+            // txtbxEmployeeID
+            // 
+            this.txtbxEmployeeID.Location = new System.Drawing.Point(106, 92);
+            this.txtbxEmployeeID.Name = "txtbxEmployeeID";
+            this.txtbxEmployeeID.Size = new System.Drawing.Size(135, 20);
+            this.txtbxEmployeeID.TabIndex = 11;
             // 
             // txtbxClientID
             // 
@@ -209,12 +149,72 @@
             this.txtbxClientID.Size = new System.Drawing.Size(151, 20);
             this.txtbxClientID.TabIndex = 10;
             // 
-            // txtbxEmployeeID
+            // lblTotalPrice
             // 
-            this.txtbxEmployeeID.Location = new System.Drawing.Point(106, 92);
-            this.txtbxEmployeeID.Name = "txtbxEmployeeID";
-            this.txtbxEmployeeID.Size = new System.Drawing.Size(135, 20);
-            this.txtbxEmployeeID.TabIndex = 11;
+            this.lblTotalPrice.AutoSize = true;
+            this.lblTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPrice.Location = new System.Drawing.Point(11, 130);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(80, 15);
+            this.lblTotalPrice.TabIndex = 8;
+            this.lblTotalPrice.Text = "Total Price:";
+            // 
+            // lblOderID
+            // 
+            this.lblOderID.AutoSize = true;
+            this.lblOderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOderID.Location = new System.Drawing.Point(11, 16);
+            this.lblOderID.Name = "lblOderID";
+            this.lblOderID.Size = new System.Drawing.Size(65, 15);
+            this.lblOderID.TabIndex = 4;
+            this.lblOderID.Text = "Order ID:";
+            // 
+            // txtbxOrderID
+            // 
+            this.txtbxOrderID.Location = new System.Drawing.Point(105, 16);
+            this.txtbxOrderID.Name = "txtbxOrderID";
+            this.txtbxOrderID.Size = new System.Drawing.Size(165, 20);
+            this.txtbxOrderID.TabIndex = 9;
+            // 
+            // lblClientID
+            // 
+            this.lblClientID.AutoSize = true;
+            this.lblClientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientID.Location = new System.Drawing.Point(11, 54);
+            this.lblClientID.Name = "lblClientID";
+            this.lblClientID.Size = new System.Drawing.Size(66, 15);
+            this.lblClientID.TabIndex = 5;
+            this.lblClientID.Text = "Client ID:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(11, 162);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(41, 15);
+            this.lblDate.TabIndex = 7;
+            this.lblDate.Text = "Date:";
+            // 
+            // lblEmployeeID
+            // 
+            this.lblEmployeeID.AutoSize = true;
+            this.lblEmployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmployeeID.Location = new System.Drawing.Point(11, 92);
+            this.lblEmployeeID.Name = "lblEmployeeID";
+            this.lblEmployeeID.Size = new System.Drawing.Size(92, 15);
+            this.lblEmployeeID.TabIndex = 6;
+            this.lblEmployeeID.Text = "Employee ID:";
+            // 
+            // lblOrder
+            // 
+            this.lblOrder.AutoSize = true;
+            this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrder.Location = new System.Drawing.Point(10, 0);
+            this.lblOrder.Name = "lblOrder";
+            this.lblOrder.Size = new System.Drawing.Size(81, 17);
+            this.lblOrder.TabIndex = 4;
+            this.lblOrder.Text = "Order List";
             // 
             // panel3
             // 
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 661);
+            this.ClientSize = new System.Drawing.Size(688, 661);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
