@@ -419,7 +419,7 @@ namespace Midterm_NET
            
             String order_id = getOrderID();
             String client_id = txtbxUsername.Text.ToString().Trim();
-            String emloyee_id = Program.sessionEmployeeID;
+            String employee_id = (Program.sessionEmployeeID.Equals("") == true) ? "admin" : Program.sessionEmployeeID;
             String date = DateTime.Now.ToString("yyyy-MM-dd");
             double total = getOrderTotal();
             if(order_id == null)
@@ -429,36 +429,82 @@ namespace Midterm_NET
             }
             else
             {
+                DialogResult dr = MessageBox.Show("Do you want to POST the Order", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(dr == DialogResult.Yes)
+                {
+                    addToOrder(order_id, client_id, employee_id, date, total);
+                    addToOrderItem(order_id, dataGridViewOrder);
 
+                    //update product
+                    //refresh we have 2 fresh this only order refresh everything
+                }
             }
         }
 
         private void addToOrder(String id, String client_id, String employee_id, String date, double total)
         {
-            //try
-            //{
-            //    SqlConnection conn = new SqlConnection(Program.strConn);
-            //    conn.Open();
-            //    String sSQL = "insert into __Order values (order_ID=@id, )";
-            //    SqlCommand cmd = new SqlCommand(sSQL, conn);
-            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //    DataTable dt = new DataTable();
-            //    da.Fill(dt);
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        //dataGridViewProduct.DataSource = dt;
-            //        result = dt;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("No Product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //    //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "insert into __Order values (@id, @client_id, @employee_id, @date, @total)";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@client_id", client_id);
+                cmd.Parameters.AddWithValue("@employee_id", employee_id);
+                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@total", total);
+                int i = cmd.ExecuteNonQuery();
+                if (i != 0)
+                {
+                    MessageBox.Show("Order Created!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error with Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void addToOrderItem(String order_id, DataGridView data)
+        {
+            int orderItemId = 0;
+            foreach (DataGridViewRow row in data.Rows)
+            {
+                orderItemId++;
+                String product_id = row.Cells[0].Value.ToString().Trim();
+                int product_quantity = int.Parse(row.Cells[2].Value.ToString().Trim());
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Program.strConn);
+                    conn.Open();
+                    String sSQL = "insert into __OrderItem values (@item_id, @order_id, @product_id, @quantity)";
+                    SqlCommand cmd = new SqlCommand(sSQL, conn);
+                    cmd.Parameters.AddWithValue("@item_id", orderItemId);
+                    cmd.Parameters.AddWithValue("@order_id", order_id);
+                    cmd.Parameters.AddWithValue("@product_id", product_id);
+                    cmd.Parameters.AddWithValue("@quantity", product_quantity);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i != 0)
+                    {
+                        //MessageBox.Show("Order Item Created!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error with Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error! Please reload the Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }           
         }
     }
 }

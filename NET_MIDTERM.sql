@@ -46,12 +46,12 @@ create table __Order(
 )
 
 create table __OrderItem(
-	order_item_id varchar(10),
+	order_item_ID varchar(10),
 	order_ID varchar(10),
 	product_ID varchar(10),
 	product_quantity int,
 
-	constraint PK_OrderItem primary key (order_item_id),
+	constraint PK_OrderItem primary key (order_item_ID, order_ID),
 	constraint FK_OrderItem_Order foreign key (order_ID) references __Order(order_ID),
 	constraint FK_OrderItem_Product foreign key (product_ID) references __Product(product_ID)
 )
@@ -88,5 +88,8 @@ insert into __Product values ('P000000002', N'Samsung Note FE', 'Samsung phone f
 insert into __Product values ('P000000003', N'Xiao Mi Express', 'A faster Xiaomi phone', 10, 100)
 select * from __Product
 
-
+--select * from __Order
+--select * from __OrderItem
+--delete from __OrderItem
+--delete from __Order
 
