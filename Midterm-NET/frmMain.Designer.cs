@@ -32,6 +32,7 @@
             this.manageEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuername = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.txtbxFullname = new System.Windows.Forms.TextBox();
             this.txtbxPhone = new System.Windows.Forms.TextBox();
             this.txtbxEmail = new System.Windows.Forms.TextBox();
-            this.manageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,13 @@
             this.manageProductToolStripMenuItem.Name = "manageProductToolStripMenuItem";
             this.manageProductToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.manageProductToolStripMenuItem.Text = "Manage &Product";
+            this.manageProductToolStripMenuItem.Click += new System.EventHandler(this.manageProductToolStripMenuItem_Click);
+            // 
+            // manageOrderToolStripMenuItem
+            // 
+            this.manageOrderToolStripMenuItem.Name = "manageOrderToolStripMenuItem";
+            this.manageOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.manageOrderToolStripMenuItem.Text = "Manage &Order";
             // 
             // placeOrderToolStripMenuItem
             // 
@@ -160,12 +167,6 @@
             this.txtbxEmail.Name = "txtbxEmail";
             this.txtbxEmail.Size = new System.Drawing.Size(145, 20);
             this.txtbxEmail.TabIndex = 8;
-            // 
-            // manageOrderToolStripMenuItem
-            // 
-            this.manageOrderToolStripMenuItem.Name = "manageOrderToolStripMenuItem";
-            this.manageOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.manageOrderToolStripMenuItem.Text = "Manage &Order";
             // 
             // frmMain
             // 

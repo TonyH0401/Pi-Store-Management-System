@@ -297,7 +297,7 @@ namespace Midterm_NET
                     int i = cmd.ExecuteNonQuery();
                     if (i != 0)
                     {
-                        MessageBox.Show("Updated Employee: " + id, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Updated Client: " + id, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnRefresh_Click(sender, e);
                     }
                     else
