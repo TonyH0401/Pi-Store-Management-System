@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +29,18 @@ namespace Midterm_NET
             dataGridViewProduct.DataSource = dtCurrent;
             dataGridViewProduct.Columns["product_desp"].Visible = false;
 
+            Load_ComboBox();
+
+            initiateDataGridViewOrder();
+        }
+
+        private void initiateDataGridViewOrder()
+        {
+            dataGridViewOrder.ColumnCount = 4;
+            dataGridViewOrder.Columns[0].Name = "product_ID";
+            dataGridViewOrder.Columns[1].Name = "product_name";
+            dataGridViewOrder.Columns[2].Name = "product_quantity";
+            dataGridViewOrder.Columns[3].Name = "product_price";
         }
 
         private void txtbxReadOnlySetUp()
@@ -86,7 +99,213 @@ namespace Midterm_NET
 
         private void Load_ComboBox()
         {
-
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select * from __Client";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    cbbxClient.DataSource = dt;
+                    cbbxClient.DisplayMember = "client_ID";
+                    cbbxClient.ValueMember = "client_ID";
+                    Load_Data_From_Combobox();
+                }
+                else
+                {
+                    MessageBox.Show("No Data to load to combobox", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error! Please reload the Application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private void Load_Data_From_Combobox()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select * from __Client where client_ID=@id";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                cmd.Parameters.AddWithValue("@id", cbbxClient.SelectedValue);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    txtbxUsername.Text = (String)dt.Rows[0][0].ToString().Trim();
+                    txtbxFullname.Text = (String)dt.Rows[0][1].ToString().Trim();
+                    txtbxEmail.Text = (String)dt.Rows[0][2].ToString().Trim();
+                    txtbxPhone.Text = (String)dt.Rows[0][3].ToString().Trim();
+                    txtbxAddress.Text = (String)dt.Rows[0][4].ToString().Trim();
+                }
+                else
+                {
+                    MessageBox.Show("No Data to Load to textbox", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error! Please reload the Application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbbxClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Load_Data_From_Combobox();
+        }
+
+        private void btnLock_Click(object sender, EventArgs e)
+        {
+            cbbxClient.Enabled = false;
+
+            txtbxUsername.Enabled = false;
+            txtbxFullname.Enabled = false;
+            txtbxEmail.Enabled = false;
+            txtbxPhone.Enabled = false;
+            txtbxAddress.Enabled = false;
+
+            btnLock.Enabled = false;
+        }
+
+        private void btnUnlock_Click(object sender, EventArgs e)
+        {
+            cbbxClient.Enabled = true;
+
+            txtbxUsername.Enabled = true;
+            txtbxFullname.Enabled = true;
+            txtbxEmail.Enabled = true;
+            txtbxPhone.Enabled = true;
+            txtbxAddress.Enabled = true;
+
+            btnLock.Enabled = true;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if(btnLock.Enabled == true)
+            {
+                MessageBox.Show("Please lock on selection of a Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(richtxtbxDescription.Text.ToString().Trim().Length == 0)
+            {
+                MessageBox.Show("Please select a Product", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtbxQuantity.Text.ToString().Trim().Length == 0)
+            {
+                MessageBox.Show("Please Enter the Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                int value = 0;
+                bool value_temp = int.TryParse(txtbxQuantity.Text.ToString().Trim(), out value);
+                if (value_temp == false)
+                {
+                    MessageBox.Show("Invalid Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    DataGridViewRow row = dataGridViewProduct.SelectedRows[0];
+                    int stock = int.Parse(row.Cells[3].Value.ToString().Trim());
+                    if (value <= 0 || value > stock)
+                    {
+                        MessageBox.Show("Invalid range Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        DataGridViewRow row2 = dataGridViewProduct.SelectedRows[0];
+                        String id = row2.Cells[0].Value.ToString().Trim();
+                        String name = row2.Cells[1].Value.ToString().Trim();
+                        String price = row2.Cells[2].Value.ToString().Trim();
+                        String quantity = value.ToString().Trim();
+                        DialogResult dr = MessageBox.Show("Do you want to add:\n\t" + "> " + id + "\n\t> " + name + "\n\t> quantity = " + quantity, "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if(dr == DialogResult.Yes)
+                        {
+                            //MessageBox.Show(dataGridViewOrder.Rows.Count.ToString().Trim());
+                            if(productExistedDataGridViewOrder(id) == false)
+                            {
+                                addDataGridViewOrder(id, name, price, quantity);
+                                MessageBox.Show("Product added: " + id, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                updateDataGridViewOrder(id, quantity);
+                                MessageBox.Show("Product updated: " + id, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            txtbxQuantity.Clear();
+                            
+                            //add update to current product dt
+                        }
+                    }
+                }
+            }
+        }
+        
+        private bool productExistedDataGridViewOrder(String id)
+        {
+            if(dataGridViewOrder.Rows.Count == 0)
+            {
+                return false;
+            }
+            foreach (DataGridViewRow row3 in dataGridViewOrder.Rows)
+            {
+                if (row3.Cells[0].Value.ToString().Trim().Equals(id) == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void addDataGridViewOrder(String id, String name, String price, String quantity)
+        {
+            String[] row = new string[]
+            {
+                id, 
+                name, 
+                quantity,
+                price
+            };
+            dataGridViewOrder.Rows.Add(row);
+        }
+
+        private void updateDataGridViewOrder(String id, String quantity)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            foreach (DataGridViewRow row2 in dataGridViewOrder.Rows)
+            {
+                if (row2.Cells[0].Value.ToString().Trim().Equals(id) == true)
+                {
+                    row = row2;
+                    break;
+                }
+            }
+            int old_quantity = int.Parse(row.Cells[2].Value.ToString().Trim());
+            int current_quantity = int.Parse(quantity);
+            int new_quantity = old_quantity + current_quantity;
+            foreach (DataGridViewRow row2 in dataGridViewOrder.Rows)
+            {
+                if (row2.Cells[0].Value.ToString().Trim().Equals(id) == true)
+                {
+                    row2.Cells[2].Value = new_quantity;
+                    break;
+                }
+            }
+        }
+
     }
 }

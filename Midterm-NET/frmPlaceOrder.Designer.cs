@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbbxSelectClient = new System.Windows.Forms.ComboBox();
+            this.cbbxClient = new System.Windows.Forms.ComboBox();
             this.txtbxAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtbxPhone = new System.Windows.Forms.TextBox();
@@ -43,8 +43,8 @@
             this.btnLock = new System.Windows.Forms.Button();
             this.btnUnlock = new System.Windows.Forms.Button();
             this.dataGridViewProduct = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.richtxtbxDescription = new System.Windows.Forms.RichTextBox();
             this.txtbxQuantity = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
@@ -52,19 +52,21 @@
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cbbxSelectClient
+            // cbbxClient
             // 
-            this.cbbxSelectClient.FormattingEnabled = true;
-            this.cbbxSelectClient.Location = new System.Drawing.Point(61, 13);
-            this.cbbxSelectClient.Name = "cbbxSelectClient";
-            this.cbbxSelectClient.Size = new System.Drawing.Size(198, 21);
-            this.cbbxSelectClient.TabIndex = 0;
+            this.cbbxClient.FormattingEnabled = true;
+            this.cbbxClient.Location = new System.Drawing.Point(61, 13);
+            this.cbbxClient.Name = "cbbxClient";
+            this.cbbxClient.Size = new System.Drawing.Size(198, 21);
+            this.cbbxClient.TabIndex = 0;
+            this.cbbxClient.SelectedIndexChanged += new System.EventHandler(this.cbbxClient_SelectedIndexChanged);
             // 
             // txtbxAddress
             // 
@@ -169,6 +171,7 @@
             this.btnLock.TabIndex = 54;
             this.btnLock.Text = "Lock";
             this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
             // btnUnlock
             // 
@@ -178,6 +181,7 @@
             this.btnUnlock.TabIndex = 55;
             this.btnUnlock.Text = "Unlock";
             this.btnUnlock.UseVisualStyleBackColor = true;
+            this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
             // 
             // dataGridViewProduct
             // 
@@ -192,23 +196,24 @@
             this.dataGridViewProduct.TabIndex = 56;
             this.dataGridViewProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProduct_CellContentClick);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(446, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(485, 354);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 57;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.Location = new System.Drawing.Point(569, 448);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 58;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(578, 354);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 58;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // richtxtbxDescription
             // 
@@ -220,16 +225,16 @@
             // 
             // txtbxQuantity
             // 
-            this.txtbxQuantity.Location = new System.Drawing.Point(544, 499);
+            this.txtbxQuantity.Location = new System.Drawing.Point(559, 319);
             this.txtbxQuantity.Name = "txtbxQuantity";
-            this.txtbxQuantity.Size = new System.Drawing.Size(70, 20);
+            this.txtbxQuantity.Size = new System.Drawing.Size(94, 20);
             this.txtbxQuantity.TabIndex = 75;
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(467, 499);
+            this.lblQuantity.Location = new System.Drawing.Point(482, 319);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(54, 13);
             this.lblQuantity.TabIndex = 74;
@@ -250,18 +255,18 @@
             this.dataGridViewOrder.AllowUserToAddRows = false;
             this.dataGridViewOrder.AllowUserToDeleteRows = false;
             this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(109, 360);
+            this.dataGridViewOrder.Location = new System.Drawing.Point(12, 319);
             this.dataGridViewOrder.Name = "dataGridViewOrder";
             this.dataGridViewOrder.ReadOnly = true;
             this.dataGridViewOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(278, 211);
+            this.dataGridViewOrder.Size = new System.Drawing.Size(444, 200);
             this.dataGridViewOrder.TabIndex = 77;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.btnUnlock);
-            this.panel1.Controls.Add(this.cbbxSelectClient);
+            this.panel1.Controls.Add(this.cbbxClient);
             this.panel1.Controls.Add(this.lblSelect);
             this.panel1.Controls.Add(this.btnLock);
             this.panel1.Location = new System.Drawing.Point(13, 12);
@@ -287,11 +292,21 @@
             this.panel2.Size = new System.Drawing.Size(292, 200);
             this.panel2.TabIndex = 79;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(727, 424);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 80;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // frmPlaceOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 579);
+            this.ClientSize = new System.Drawing.Size(844, 531);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewOrder);
@@ -299,8 +314,8 @@
             this.Controls.Add(this.txtbxQuantity);
             this.Controls.Add(this.lblQuantity);
             this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridViewProduct);
             this.MaximizeBox = false;
             this.Name = "frmPlaceOrder";
@@ -320,7 +335,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbbxSelectClient;
+        private System.Windows.Forms.ComboBox cbbxClient;
         private System.Windows.Forms.TextBox txtbxAddress;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtbxPhone;
@@ -335,8 +350,8 @@
         private System.Windows.Forms.Button btnLock;
         private System.Windows.Forms.Button btnUnlock;
         private System.Windows.Forms.DataGridView dataGridViewProduct;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.RichTextBox richtxtbxDescription;
         private System.Windows.Forms.TextBox txtbxQuantity;
         private System.Windows.Forms.Label lblQuantity;
@@ -344,5 +359,6 @@
         private System.Windows.Forms.DataGridView dataGridViewOrder;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button3;
     }
 }
