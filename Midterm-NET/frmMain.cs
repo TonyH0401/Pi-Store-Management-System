@@ -138,5 +138,10 @@ namespace Midterm_NET
                 MessageBox.Show("You are not allowed to view this page!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void placeOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
