@@ -188,6 +188,7 @@ namespace Midterm_NET
                 {
                     addBill(bill_id, order_id, client_id, employee_id, bill_date, total_price);
                     btnRefresh_Click(sender, e);
+                    btnUnlock_Click(sender, e);
                 }
             }
             //MessageBox.Show(bill_id);
@@ -292,6 +293,7 @@ namespace Midterm_NET
             lstbxBill.ClearSelected();
 
             btnLock.Enabled = true;
+            btnUnlock_Click(sender, e);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
