@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Midterm_NET
 {
-    internal class Employee
+    public class Employee
     {
         public Employee()
         {

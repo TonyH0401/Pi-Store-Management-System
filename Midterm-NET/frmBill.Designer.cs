@@ -32,14 +32,14 @@
             this.lblOrderItem = new System.Windows.Forms.Label();
             this.dataGridViewOrderItem = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnUnlock = new System.Windows.Forms.Button();
+            this.btnLock = new System.Windows.Forms.Button();
             this.lblOrder = new System.Windows.Forms.Label();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.lstbxBill = new System.Windows.Forms.ListBox();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.btnLock = new System.Windows.Forms.Button();
-            this.btnUnlock = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblBillList = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
@@ -98,6 +98,36 @@
             this.panel1.Size = new System.Drawing.Size(607, 213);
             this.panel1.TabIndex = 8;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(517, 9);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 15;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnUnlock
+            // 
+            this.btnUnlock.Location = new System.Drawing.Point(313, 9);
+            this.btnUnlock.Name = "btnUnlock";
+            this.btnUnlock.Size = new System.Drawing.Size(75, 23);
+            this.btnUnlock.TabIndex = 14;
+            this.btnUnlock.Text = "Unlock";
+            this.btnUnlock.UseVisualStyleBackColor = true;
+            this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
+            // 
+            // btnLock
+            // 
+            this.btnLock.Location = new System.Drawing.Point(208, 9);
+            this.btnLock.Name = "btnLock";
+            this.btnLock.Size = new System.Drawing.Size(75, 23);
+            this.btnLock.TabIndex = 13;
+            this.btnLock.Text = "Lock";
+            this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
+            // 
             // lblOrder
             // 
             this.lblOrder.AutoSize = true;
@@ -107,6 +137,16 @@
             this.lblOrder.Size = new System.Drawing.Size(81, 17);
             this.lblOrder.TabIndex = 4;
             this.lblOrder.Text = "Order List";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(416, 9);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 11;
+            this.btnCreate.Text = "&Create Bill";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // dataGridViewOrder
             // 
@@ -130,16 +170,6 @@
             this.lstbxBill.Size = new System.Drawing.Size(194, 199);
             this.lstbxBill.TabIndex = 10;
             // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(416, 9);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 11;
-            this.btnCreate.Text = "&Create Bill";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(72, 236);
@@ -149,36 +179,6 @@
             this.btnPrint.Text = "&Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnLock
-            // 
-            this.btnLock.Location = new System.Drawing.Point(215, 9);
-            this.btnLock.Name = "btnLock";
-            this.btnLock.Size = new System.Drawing.Size(75, 23);
-            this.btnLock.TabIndex = 13;
-            this.btnLock.Text = "Lock";
-            this.btnLock.UseVisualStyleBackColor = true;
-            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
-            // 
-            // btnUnlock
-            // 
-            this.btnUnlock.Location = new System.Drawing.Point(313, 9);
-            this.btnUnlock.Name = "btnUnlock";
-            this.btnUnlock.Size = new System.Drawing.Size(75, 23);
-            this.btnUnlock.TabIndex = 14;
-            this.btnUnlock.Text = "Unlock";
-            this.btnUnlock.UseVisualStyleBackColor = true;
-            this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(517, 9);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 15;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // panel2
             // 
