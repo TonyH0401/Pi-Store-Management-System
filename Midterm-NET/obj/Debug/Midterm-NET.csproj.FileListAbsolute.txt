@@ -94,3 +94,5 @@ D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\bin\Debug\System.Memory.xml
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\bin\Debug\System.Numerics.Vectors.xml
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm_NET.frmSearch.resources
+D:\1.TDTU\5.NET Technology\3.Midterm\Midterm-NET\obj\Debug\Midterm_NET.frmSearchEx1.resources

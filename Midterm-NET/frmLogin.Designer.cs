@@ -36,6 +36,7 @@
             this.chkbxShowPassword = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.txtbxPassword);
-            this.panel1.Location = new System.Drawing.Point(255, 90);
+            this.panel1.Location = new System.Drawing.Point(151, 91);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(277, 110);
             this.panel1.TabIndex = 4;
@@ -103,7 +104,7 @@
             this.btnLogin.BackColor = System.Drawing.Color.ForestGreen;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLogin.Location = new System.Drawing.Point(279, 212);
+            this.btnLogin.Location = new System.Drawing.Point(175, 213);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(106, 36);
             this.btnLogin.TabIndex = 5;
@@ -116,7 +117,7 @@
             this.btnExit.BackColor = System.Drawing.Color.IndianRed;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(405, 212);
+            this.btnExit.Location = new System.Drawing.Point(301, 213);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(106, 36);
             this.btnExit.TabIndex = 7;
@@ -124,12 +125,23 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(112, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(364, 39);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Pi Store Management";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 261);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panel1);
@@ -141,6 +153,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -154,6 +167,7 @@
         private System.Windows.Forms.CheckBox chkbxShowPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -49,6 +49,7 @@
             this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +115,7 @@
             // 
             this.lblUsuername.AutoSize = true;
             this.lblUsuername.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuername.Location = new System.Drawing.Point(64, 67);
+            this.lblUsuername.Location = new System.Drawing.Point(87, 141);
             this.lblUsuername.Name = "lblUsuername";
             this.lblUsuername.Size = new System.Drawing.Size(63, 13);
             this.lblUsuername.TabIndex = 1;
@@ -124,7 +125,7 @@
             // 
             this.lblFullname.AutoSize = true;
             this.lblFullname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullname.Location = new System.Drawing.Point(64, 102);
+            this.lblFullname.Location = new System.Drawing.Point(87, 176);
             this.lblFullname.Name = "lblFullname";
             this.lblFullname.Size = new System.Drawing.Size(57, 13);
             this.lblFullname.TabIndex = 2;
@@ -134,7 +135,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(64, 136);
+            this.lblEmail.Location = new System.Drawing.Point(409, 141);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(37, 13);
             this.lblEmail.TabIndex = 3;
@@ -144,7 +145,7 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(64, 171);
+            this.lblPhone.Location = new System.Drawing.Point(409, 176);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(43, 13);
             this.lblPhone.TabIndex = 5;
@@ -152,28 +153,28 @@
             // 
             // txtbxUsername
             // 
-            this.txtbxUsername.Location = new System.Drawing.Point(141, 67);
+            this.txtbxUsername.Location = new System.Drawing.Point(164, 141);
             this.txtbxUsername.Name = "txtbxUsername";
             this.txtbxUsername.Size = new System.Drawing.Size(116, 20);
             this.txtbxUsername.TabIndex = 6;
             // 
             // txtbxFullname
             // 
-            this.txtbxFullname.Location = new System.Drawing.Point(141, 102);
+            this.txtbxFullname.Location = new System.Drawing.Point(164, 176);
             this.txtbxFullname.Name = "txtbxFullname";
             this.txtbxFullname.Size = new System.Drawing.Size(163, 20);
             this.txtbxFullname.TabIndex = 7;
             // 
             // txtbxPhone
             // 
-            this.txtbxPhone.Location = new System.Drawing.Point(141, 171);
+            this.txtbxPhone.Location = new System.Drawing.Point(486, 176);
             this.txtbxPhone.Name = "txtbxPhone";
             this.txtbxPhone.Size = new System.Drawing.Size(128, 20);
             this.txtbxPhone.TabIndex = 9;
             // 
             // txtbxEmail
             // 
-            this.txtbxEmail.Location = new System.Drawing.Point(141, 136);
+            this.txtbxEmail.Location = new System.Drawing.Point(486, 141);
             this.txtbxEmail.Name = "txtbxEmail";
             this.txtbxEmail.Size = new System.Drawing.Size(145, 20);
             this.txtbxEmail.TabIndex = 8;
@@ -225,11 +226,22 @@
             this.productToolStripMenuItem.Text = "Product";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(191, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(364, 39);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Pi Store Management";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 261);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbxPhone);
             this.Controls.Add(this.txtbxEmail);
             this.Controls.Add(this.txtbxFullname);
@@ -275,5 +287,6 @@
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

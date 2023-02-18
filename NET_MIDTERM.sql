@@ -101,3 +101,5 @@ select * from __Product
 --from __Product P, __OrderItem OI
 --where P.product_ID = OI.product_ID
 --order by order_ID asc, product_ID asc
+
+--select * from __Employee where hired_date <= '2019-12-01' and hired_date >= '2010-01-01'
