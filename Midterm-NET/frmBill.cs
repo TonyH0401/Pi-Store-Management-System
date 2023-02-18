@@ -191,7 +191,6 @@ namespace Midterm_NET
                     btnUnlock_Click(sender, e);
                 }
             }
-            //MessageBox.Show(bill_id);
         }
 
         private void btnLock_Click(object sender, EventArgs e)
@@ -313,9 +312,100 @@ namespace Midterm_NET
                 DialogResult dr = MessageBox.Show("Do you want to Print: " + lstbxBill.SelectedItem.ToString(), "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(dr == DialogResult.Yes)
                 {
-                    MessageBox.Show("OK");
+                    //MessageBox.Show("OK");
+                    DataTable bill = getBill(lstbxBill.SelectedValue.ToString().Trim());
+                    String bill_id = bill.Rows[0][0].ToString().Trim();
+                    String order_id = bill.Rows[0][1].ToString().Trim();
+                    String client_id = bill.Rows[0][2].ToString().Trim();
+                    String employee_id = bill.Rows[0][3].ToString().Trim();
+                    String bill_date = bill.Rows[0][4].ToString().Trim();
+                    String total_price = bill.Rows[0][5].ToString().Trim();
+
+                    DataTable product = getProduct(order_id);
+                    List<Product> dataSource = convertDataTableToListProduct(product);
+
+                    frmPrint f = new frmPrint(dataSource, bill_id, order_id, client_id, employee_id, bill_date, total_price);
+                    f.ShowDialog();
+
                 }
             }
+        }
+
+        private DataTable getBill(String bill_id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select * from __Bill where bill_ID=@id";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                cmd.Parameters.AddWithValue("@id", bill_id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<String> listBoxList = new List<String>();
+                if (dt.Rows.Count > 0)
+                {
+                    result = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No Bill data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Customer Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+        private DataTable getProduct(String order_id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select P.product_ID, P.product_name, OI.product_quantity, P.product_price from __Product P, __OrderItem OI where P.product_ID = OI.product_ID and OI.order_ID=@id";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                cmd.Parameters.AddWithValue("@id", order_id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<String> listBoxList = new List<String>();
+                if (dt.Rows.Count > 0)
+                {
+                    result = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No Bill data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Customer Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+        public List<Product> convertDataTableToListProduct(DataTable datatable)
+        {
+            List<Product> res = new List<Product>();
+            foreach (DataRow row in datatable.Rows)
+            {
+                Product product = new Product();
+                product.id = row[0].ToString();
+                product.Name = row[1].ToString();
+                product.quantity = int.Parse(row[2].ToString());
+                product.total = double.Parse(row[3].ToString());
+                res.Add(product);
+            }
+            return res;
         }
     }
 }
