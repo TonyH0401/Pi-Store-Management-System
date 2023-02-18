@@ -101,6 +101,7 @@
             this.generateBillToolStripMenuItem.Name = "generateBillToolStripMenuItem";
             this.generateBillToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.generateBillToolStripMenuItem.Text = "Generate Bill";
+            this.generateBillToolStripMenuItem.Click += new System.EventHandler(this.generateBillToolStripMenuItem_Click);
             // 
             // lblUsuername
             // 

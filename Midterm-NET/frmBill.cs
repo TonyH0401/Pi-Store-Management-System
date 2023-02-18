@@ -30,7 +30,7 @@ namespace Midterm_NET
             Load_Bill();
             lstbxBill.ClearSelected();
 
-            //this.Text = "Manage Order - " + Program.sessionEmployeeID;
+            this.Text = "Manage Bill - " + Program.sessionEmployeeID;
         }
 
         private void Load_Bill()
@@ -319,6 +319,11 @@ namespace Midterm_NET
                     String client_id = bill.Rows[0][2].ToString().Trim();
                     String employee_id = bill.Rows[0][3].ToString().Trim();
                     String bill_date = bill.Rows[0][4].ToString().Trim();
+                    
+                    String[] temp = bill_date.Split(' ');
+                    String[] temp2 = temp[0].Split('/');
+                    bill_date = temp2[1] + "/" + temp2[0] + "/" + temp2[2] + " " + temp[1] + " " + temp[2];
+
                     String total_price = bill.Rows[0][5].ToString().Trim();
 
                     DataTable product = getProduct(order_id);

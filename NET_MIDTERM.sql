@@ -97,7 +97,7 @@ select * from __Product
 --delete from __Bill
 
 --this one is important
-select P.product_ID, P.product_name, P.product_price, OI.product_quantity, OI.order_ID 
-from __Product P, __OrderItem OI
-where P.product_ID = OI.product_ID
-order by order_ID asc, product_ID asc
+--select P.product_ID, P.product_name, P.product_price, OI.product_quantity, OI.order_ID 
+--from __Product P, __OrderItem OI
+--where P.product_ID = OI.product_ID
+--order by order_ID asc, product_ID asc

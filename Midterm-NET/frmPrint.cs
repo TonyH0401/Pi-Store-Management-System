@@ -52,6 +52,9 @@ namespace Midterm_NET
             }; 
             this.reportViewer1.LocalReport.SetParameters(para);
             this.reportViewer1.RefreshReport();
+
+            String temp = this.Text.ToString().Trim();
+            this.Text = temp + " - " + _bill_id;
         }
     }
 }
