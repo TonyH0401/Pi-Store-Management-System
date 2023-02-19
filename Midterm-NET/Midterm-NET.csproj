@@ -82,6 +82,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +100,12 @@
     </Compile>
     <Compile Include="frmBill.Designer.cs">
       <DependentUpon>frmBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChart.Designer.cs">
+      <DependentUpon>frmChart.cs</DependentUpon>
     </Compile>
     <Compile Include="frmClient.cs">
       <SubType>Form</SubType>
@@ -166,6 +173,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBill.resx">
       <DependentUpon>frmBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChart.resx">
+      <DependentUpon>frmChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>

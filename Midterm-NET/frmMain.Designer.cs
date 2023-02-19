@@ -35,6 +35,12 @@
             this.manageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuername = new System.Windows.Forms.Label();
             this.lblFullname = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -43,13 +49,9 @@
             this.txtbxFullname = new System.Windows.Forms.TextBox();
             this.txtbxPhone = new System.Windows.Forms.TextBox();
             this.txtbxEmail = new System.Windows.Forms.TextBox();
-            this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.chartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +112,54 @@
             this.generateBillToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.generateBillToolStripMenuItem.Text = "Generate &Bill";
             this.generateBillToolStripMenuItem.Click += new System.EventHandler(this.generateBillToolStripMenuItem_Click);
+            // 
+            // otherToolStripMenuItem
+            // 
+            this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem,
+            this.exportCSVToolStripMenuItem,
+            this.chartToolStripMenuItem});
+            this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
+            this.otherToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.otherToolStripMenuItem.Text = "Other";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            // 
+            // exportCSVToolStripMenuItem
+            // 
+            this.exportCSVToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.employeeToolStripMenuItem,
+            this.clientToolStripMenuItem,
+            this.productToolStripMenuItem});
+            this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
+            this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportCSVToolStripMenuItem.Text = "Export CSV";
+            // 
+            // employeeToolStripMenuItem
+            // 
+            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.employeeToolStripMenuItem.Text = "Employee";
+            this.employeeToolStripMenuItem.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
+            // 
+            // clientToolStripMenuItem
+            // 
+            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
+            this.clientToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.clientToolStripMenuItem.Text = "Client";
+            this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
+            // 
+            // productToolStripMenuItem
+            // 
+            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.productToolStripMenuItem.Text = "Product";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // lblUsuername
             // 
@@ -179,53 +229,6 @@
             this.txtbxEmail.Size = new System.Drawing.Size(145, 20);
             this.txtbxEmail.TabIndex = 8;
             // 
-            // otherToolStripMenuItem
-            // 
-            this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchToolStripMenuItem,
-            this.exportCSVToolStripMenuItem});
-            this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
-            this.otherToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.otherToolStripMenuItem.Text = "Other";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchToolStripMenuItem.Text = "Search";
-            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
-            // 
-            // exportCSVToolStripMenuItem
-            // 
-            this.exportCSVToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.employeeToolStripMenuItem,
-            this.clientToolStripMenuItem,
-            this.productToolStripMenuItem});
-            this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
-            this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportCSVToolStripMenuItem.Text = "Export CSV";
-            // 
-            // employeeToolStripMenuItem
-            // 
-            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.employeeToolStripMenuItem.Text = "Employee";
-            this.employeeToolStripMenuItem.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
-            // 
-            // clientToolStripMenuItem
-            // 
-            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-            this.clientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clientToolStripMenuItem.Text = "Client";
-            this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
-            // 
-            // productToolStripMenuItem
-            // 
-            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.productToolStripMenuItem.Text = "Product";
-            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -235,6 +238,20 @@
             this.label1.Size = new System.Drawing.Size(364, 39);
             this.label1.TabIndex = 10;
             this.label1.Text = "Pi Store Management";
+            // 
+            // chartToolStripMenuItem
+            // 
+            this.chartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productToolStripMenuItem1});
+            this.chartToolStripMenuItem.Name = "chartToolStripMenuItem";
+            this.chartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chartToolStripMenuItem.Text = "Chart";
+            // 
+            // productToolStripMenuItem1
+            // 
+            this.productToolStripMenuItem1.Name = "productToolStripMenuItem1";
+            this.productToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.productToolStripMenuItem1.Text = "Product";
             // 
             // frmMain
             // 
@@ -288,5 +305,7 @@
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem chartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem1;
     }
 }
