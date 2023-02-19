@@ -53,9 +53,17 @@ namespace Midterm_NET
             txtbxEmail.Text = currentEmployee.email;
             txtbxPhone.Text = currentEmployee.phone;
 
-            if (authenticationEmployee(currentEmployee.Id) == false)
+            //if(Program.sessionEmployeeID.Length == 0)
+            //{
+            //    Application.Exit();
+            //}
+
+            if(Program.sessionEmployeeID != "")
             {
-                exportCSVToolStripMenuItem.Enabled = false;
+                if (authenticationEmployee(currentEmployee.Id) == false)
+                {
+                    exportCSVToolStripMenuItem.Enabled = false;
+                }
             }
 
             this.Text = "Home page of - " + currentEmployee.Id;
