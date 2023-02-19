@@ -347,6 +347,19 @@ namespace Midterm_NET
                 if (index >= 0)
                 {
                     dataGridViewOrder.Rows.RemoveAt(index);
+                    //update dataGridviewProduct
+                    String product_id_order = dataGridViewOrder.Rows[index].ToString();
+                    foreach (DataGridViewRow row in dataGridViewProduct.Rows)
+                    {
+                        String product_id_product = row.Cells[0].Value.ToString().Trim();
+                        if (product_id_order.Equals(product_id_product) == true)
+                        {
+                            int product_quantity_order = int.Parse(product_id_order);
+                            int product_quantity_product = int.Parse(product_id_product);
+                            int temp = product_quantity_order + product_quantity_product;
+
+                        }
+                    }
                 }
                 else
                 {
