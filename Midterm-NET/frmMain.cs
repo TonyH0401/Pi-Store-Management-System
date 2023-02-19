@@ -433,9 +433,44 @@ namespace Midterm_NET
 
         private void productToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DataTable dt = getProduct();
+            DataTable dt = Load_Product_ID_Quantity();
             String seriesName = "Product Quantity";
-            int maxValue = 300; 
+            int maxValue = 250;
+
+            frmChart f = new frmChart(dt, seriesName, maxValue);
+            f.Show();
         }
+
+        private DataTable Load_Product_ID_Quantity()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Program.strConn);
+                conn.Open();
+                String sSQL = "select product_name, product_quantity from __Product";
+                SqlCommand cmd = new SqlCommand(sSQL, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<String> listBoxList = new List<String>();
+                if (dt.Rows.Count > 0)
+                {
+                    return dt;
+                }
+                else
+                {
+                    return new DataTable();
+                    //MessageBox.Show("No Bill data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("Customer Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return new DataTable();
+        }
+
+
     }
 }

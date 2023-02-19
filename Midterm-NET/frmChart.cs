@@ -18,6 +18,11 @@ namespace Midterm_NET
         private String seriesName = "";
         private int maxValue = 0;
 
+        public frmChart()
+        {
+            InitializeComponent();
+        }
+
         public frmChart(DataTable dt, string seriesName, int maxValue)
         {
             InitializeComponent();
@@ -32,19 +37,18 @@ namespace Midterm_NET
             this.chart1.Series.Clear();
 
             //set up the name of the series
-            String seriesName = "Hello";
             Series ser1 = chart1.Series.Add(seriesName);
             ser1.Name = seriesName;
 
             //set max value
-            this.chart1.ChartAreas[0].AxisY.Maximum = 300;
+            this.chart1.ChartAreas[0].AxisY.Maximum = maxValue;
 
             //load the product
-            DataTable dt = Load_Product();
             foreach (DataRow item in dt.Rows)
             {
                 String id = item[0].ToString();
                 String quantity = item[1].ToString();
+                //the AddXY is set to Auto
                 this.chart1.Series[seriesName].Points.AddXY(id, quantity);
             }
 
@@ -53,36 +57,7 @@ namespace Midterm_NET
             this.chart1.Series[seriesName].Sort(
                System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Ascending);
 
-        }
-
-        private DataTable Load_Product()
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection(Program.strConn);
-                conn.Open();
-                String sSQL = "select product_name, product_quantity from __Product";
-                SqlCommand cmd = new SqlCommand(sSQL, conn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                List<String> listBoxList = new List<String>();
-                if (dt.Rows.Count > 0)
-                {
-                    return dt;
-                }
-                else
-                {
-                    return new DataTable();
-                    //MessageBox.Show("No Bill data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Customer Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return new DataTable();
+            this.Text = seriesName + " bar chart";
         }
 
     }
