@@ -342,22 +342,30 @@ namespace Midterm_NET
             }
             else
             {
-
-                int index = dataGridViewOrder.SelectedRows[0].Index;
-                if (index >= 0)
+                DialogResult dr = MessageBox.Show("Do you want to delete? ", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(dr == DialogResult.Yes)
                 {
-                    dataGridViewOrder.Rows.RemoveAt(index);
-                    //update dataGridviewProduct
-                    String product_id_order = dataGridViewOrder.Rows[index].ToString();
-                    foreach (DataGridViewRow row in dataGridViewProduct.Rows)
+                    int index = dataGridViewOrder.SelectedRows[0].Index;
+                    if (index >= 0)
                     {
-                        String product_id_product = row.Cells[0].Value.ToString().Trim();
-                        if (product_id_order.Equals(product_id_product) == true)
-                        {
-                            int product_quantity_order = int.Parse(product_id_order);
-                            int product_quantity_product = int.Parse(product_id_product);
-                            int temp = product_quantity_order + product_quantity_product;
+                        String product_id_order = dataGridViewOrder.Rows[index].Cells[0].Value.ToString().Trim();
+                        int product_quantity_order = int.Parse(dataGridViewOrder.Rows[index].Cells[2].Value.ToString().Trim());
+                        dataGridViewOrder.Rows.RemoveAt(index);
 
+                        //update dataGridviewProduct
+                        //MessageBox.Show(product_id_order);
+                        foreach (DataGridViewRow row in dataGridViewProduct.Rows)
+                        {
+                            String product_id_product = row.Cells[0].Value.ToString().Trim();
+                            if (product_id_order.Equals(product_id_product) == true)
+                            {
+                                //int product_quantity_order = int.Parse(product_id_order);
+                                int product_quantity_product = int.Parse(row.Cells[3].Value.ToString().Trim());
+                                int temp = product_quantity_order + product_quantity_product;
+                                row.Cells[3].Value = temp.ToString().Trim();
+
+                                //MessageBox.Show(temp.ToString());
+                            }
                         }
                     }
                 }
