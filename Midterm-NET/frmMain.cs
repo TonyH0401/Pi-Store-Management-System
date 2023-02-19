@@ -430,5 +430,12 @@ namespace Midterm_NET
                 MessageBox.Show("You are not allowed to view this page!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void productToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DataTable dt = getProduct();
+            String seriesName = "Product Quantity";
+            int maxValue = 300; 
+        }
     }
 }
